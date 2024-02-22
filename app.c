@@ -7,8 +7,14 @@ int main(void)
 	float n1, n2, res;
 
 	printf("******************************************************\n");
+
+    	printf(" + : Addition\n");
+    	printf(" - : Subtraction\n");
+    	printf(" * : Multiplication\n");
+    	printf(" / : Division\n");
+    	printf(" s/S : Square Root\n");
+    	printf(" p/P : Power\n\n");
 	
-	printf("s/S = square root, p/P = power\n");
 	printf("Enter operation (+, -, *, /, s or S, p or P): ");
 	scanf(" %c", &oper);
 
