@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include <math.h>
 
+float	ft_fibonacci(int index);
+
 int main(void)
 {
 	char oper;
 	float n1, n2, res;
 
 	printf("******************************************************\n");
-
+	printf("Operations->\n");
     	printf(" + : Addition\n");
     	printf(" - : Subtraction\n");
     	printf(" * : Multiplication\n");
     	printf(" / : Division\n");
+    	printf(" ^ : Power\n");
+	printf(" ! : Factorial\n");
     	printf(" s/S : Square Root\n");
-    	printf(" p/P : Power\n");
-	printf(" f/F : Factorial\n");
+	printf(" f/F : Fibonacci\n");
 
 	printf("\n");
 	
-	printf("Enter operation (+, -, *, /, s or S, p or P): ");
+	printf("Enter operation: ");
 	scanf(" %c", &oper);
 
 	switch(oper)
@@ -27,28 +30,28 @@ int main(void)
 			printf("Enter two numbers(space between): ");
 			scanf("%f %f", &n1, &n2);
 			res = n1 + n2;
-			printf("\nResult: %f\n", res);
+			printf("\nResult: %.3f\n", res);
 			break;
 
 		case '-':
 			printf("Enter two numbers(space between): ");
 			scanf("%f %f", &n1, &n2);
 			res = n1 - n2;
-			printf("\nResult: %f\n", res);
+			printf("\nResult: %.3f\n", res);
 			break;
 
 		case '*':
 			printf("Enter two numbers(space between): ");
 			scanf("%f %f", &n1, &n2);
 			res = n1 * n2;
-			printf("\nResult: %f\n", res);
+			printf("\nResult: %.3f\n", res);
 			break;
 
 		case '/':
 			printf("Enter two numbers(space between): ");
 			scanf("%f %f", &n1, &n2);
 			res = n1 / n2;
-			printf("\nResult: %f\n", res);
+			printf("\nResult: %.3f\n", res);
 			break;
 
 		case 's':
@@ -58,7 +61,7 @@ int main(void)
 			if (n1 >= 0)
 			{
 				res = sqrt(n1);
-				printf("\nResult: %f\n", res);
+				printf("\nResult: %.3f\n", res);
 			}
 			else
 			{
@@ -66,16 +69,14 @@ int main(void)
 			}
 			break;
 
-		case 'p':
-		case 'P':
+		case '^':
 			printf("Enter base and exponent(space between): ");
 			scanf("%f %f", &n1, &n2);
 			res = pow(n1, n2);
-			printf("\nResult: %f\n", res);
+			printf("\nResult: %.3f\n", res);
 			break;
 
-		case 'f':
-		case 'F':
+		case '!':
 			res = 1;
 			printf("Enter a number: ");
 			scanf("%f", &n1);
@@ -85,12 +86,20 @@ int main(void)
 				{
 					res = res *= i;
 				}
-				printf("\nResult: %f\n", res);
+				printf("\nResult: %.3f\n", res);
 			}
 			else
 			{
 				printf("Invalid number");
 			}
+			break;
+
+		case 'f':
+		case 'F':
+			printf("Enter a number");
+			scanf("%f", &res);
+			printf("\nResult: %.3f\n", ft_fibonacci(res));
+			
 			break;
 		
 		default:
@@ -100,4 +109,24 @@ int main(void)
 	printf("******************************************************\n");
 
 	return (0);
+}
+
+float	ft_fibonacci(int index)
+{
+	if (index < 0)
+	{
+		return (-1);
+	}
+	else if (index == 0)
+	{
+		return (0);
+	}
+	else if (index == 1 || index == 2)
+	{
+		return (1);
+	}
+	else
+	{
+		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	}
 }
